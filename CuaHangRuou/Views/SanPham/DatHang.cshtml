@@ -1,0 +1,142 @@
+﻿
+@{
+    ViewBag.Title = "Đặt Hàng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- page-title -->
+<div class="page-title-area item-bg-3">
+    <div class="container">
+        <div class="page-title-content">
+            <h2>Shop Details</h2>
+            <ul>
+                <li>
+                    <a href="@Url.Action("Index","Home")">
+                        Home
+                        <i class="fa fa-chevron-right"></i>
+                    </a>
+                </li>
+                <li>Đặt Hàng</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- product-details -->
+<section class="product-details-area ptb-100 ">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-md-12">
+                <div class="product-details-desc">
+                    <h3 class="text-center">Thông tin đơn hàng</h3>
+
+                    <div class="col-lg-12 col-md-12">
+                        <div class="tab products-details-tab">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12">
+                                    <div class="tab_content">
+                                        <div class="tabs_item">
+                                            <div class="products-details-tab-content">
+                                                <ul class="additional-information">
+                                                    <li><span>Họ tên:</span> Nguyễn Tuấn Anh</li>
+                                                    <li><span>Địa chỉ:</span> Hà Nội</li>
+                                                    <li><span>Điện thoại:</span> 0123456</li>
+                                                    <li><span>Email:</span> sgf@gmail.com</li>
+                                                    <li>
+                                                        <span>Thông tin sản phẩm</span>
+                                                        <section class="cart-area ptb-100">
+                                                            <div class="container">
+                                                                <div class="row">
+                                                                    <div class="col-lg-12 col-md-12">
+                                                                        <form>
+                                                                            <div class="cart-table table-responsive">
+                                                                                <table class="table table-bordered">
+                                                                                    <thead>
+                                                                                        <tr>
+                                                                                            <th scope="col">Hình ảnh</th>
+                                                                                            <th scope="col">Sản phẩm</th>
+                                                                                            <th scope="col">Đơn giá</th>
+                                                                                            <th scope="col">Số lượng</th>
+                                                                                            <th scope="col">Thành tiền</th>
+                                                                                        </tr>
+                                                                                    </thead>
+                                                                                    <tbody>
+                                                                                        <tr>
+                                                                                            <td class="product-thumbnail">
+                                                                                                <a href="@Url.Action("GioHang","SanPham")">
+                                                                                                    <img src="~/wwwroot/img/cart/1.png"
+                                                                                                         alt="item">
+                                                                                                </a>
+                                                                                            </td>
+                                                                                            <td class="product-name">
+                                                                                                <a href="./giohang.html">Analytical Balances 2</a>
+                                                                                            </td>
+                                                                                            <td class="product-price">
+                                                                                                <span class="unit-amount">$14.00</span>
+                                                                                            </td>
+                                                                                            <td class="product-quantity">
+                                                                                                <div class="input-counter">
+                                                                                                    1
+                                                                                                </div>
+                                                                                            </td>
+                                                                                            <td class="product-subtotal">
+                                                                                                <span class="subtotal-amount">$14.00</span>
+                                                                                                <a href="@Url.Action("GioHang","SanPham")" class="remove">
+                                                                                                    <i class="fa fa-trash-alt"></i>
+                                                                                                </a>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td><h3>Tổng tiền</h3></td>
+                                                                                            <td></td>
+                                                                                            <td></td>
+                                                                                            <td></td>
+                                                                                            <td><h3>$14.00</h3></td>
+                                                                                        </tr>
+
+                                                                                    </tbody>
+                                                                                </table>
+                                                                            </div>
+
+
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </section>
+                                                    </li>
+                                                </ul>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="buy-checkbox-btn">
+
+                        <div class="item">
+                            <a href="@Url.Action("Index","Home")" class="default-btn">Quay lại trang chủ</a>
+                        </div>
+                    </div>
+                    <div class="custom-payment-options">
+                        <span>Thanh toán online</span>
+                        <div class="payment-methods">
+                            <img src="~/wwwroot/img/product-details/payment/1.svg" alt="image">
+                            <img src="~/wwwroot/img/product-details/payment/2.svg" alt="image">
+                            <img src="~/wwwroot/img/product-details/payment/3.svg" alt="image">
+                            <img src="~/wwwroot/img/product-details/payment/4.svg" alt="image">
+                            <img src="~/wwwroot/img/product-details/payment/5.svg" alt="image">
+                            <img src="~/wwwroot/img/product-details/payment/6.svg" alt="image">
+                            <img src="~/wwwroot/img/product-details/payment/7.svg" alt="image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

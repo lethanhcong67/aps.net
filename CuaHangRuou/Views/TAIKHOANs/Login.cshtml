@@ -1,0 +1,89 @@
+﻿@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="login-area">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 p-0">
+                <div class="log-in-bg"></div>
+            </div>
+            <div class="col-lg-6 col-md-6 p-0">
+                <div class="login-form">
+                    <h3>Đăng nhập</h3>
+                    <form action="Login" method="post" id="registerForm">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label>Tên đăng nhập</label>
+                                    <input type="text" name="tendn" class="form-control" placeholder="Tên đăng nhập"
+                                           spellcheck="false" data-ms-editor="true" 
+                                            onfocus="changValue(this.name);">
+                                    @if (ViewBag.userErrorMsg!=null)
+                                    {
+                                        <div class="text-danger" id="tendn-err">@ViewBag.userErrorMsg</div>
+                                    }
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label>Mật khẩu</label>
+                                    <input type="password" name="matkhau" class="form-control" placeholder="Mật khẩu"
+                                           onfocus="changValue(this.name);">
+                                    @if (ViewBag.passwordErrorMsg != null)
+                                    {
+                                        <div class="text-danger" id="matkhau-err">@ViewBag.passwordErrorMsg</div>
+                                    }
+                                </div>
+                                @if (ViewBag.error != null)
+                                {
+                                    <div class="text-danger">@ViewBag.error</div>
+                                }
+                            </div>
+                            <div class="col-md-6 offset-md-3">
+                                <button type="submit" class="btn default-btn">Đăng nhập</button>
+                            </div>
+                            <div class="col-lg-12">
+                                <p>
+                                    Bạn chưa có tài khoản?
+                                    <a href="@Url.Action("DangKy","TaiKhoans")">Đăng ký</a>
+                                </p>
+                            </div>
+                            <div class="col-lg-12">
+                                <ul class="social-list">
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-facebook"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-twitter"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-google-plus"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-linkedin"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    function changValue(name) {
+        document.getElementById(`${name}-err`).style.display = 'none';
+    }
+</script>

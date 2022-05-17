@@ -1,0 +1,89 @@
+﻿@model PagedList.IPagedList<CuaHangRuou.Models.SANPHAM>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "XemSanPhamTheoDanhMuc";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- pagr title -->
+<div class="page-title-area item-bg-3">
+    <div class="container">
+        <div class="page-title-content">
+            <h2>Shop</h2>
+            <ul>
+                <li>
+                    <a href="@Url.Action("Index","Home")">
+                        Home
+                        <i class="fa fa-chevron-right"></i>
+                    </a>
+                </li>
+                <li>Shop</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- products -->
+<section class="our-products-area ptb-100">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="section-title">
+                <span>SẢN PHẨM</span>
+                <h2 style="font-family: Arial">Bộ sưu tập rượu nổi bật</h2>
+                <p>
+                    Nhà cung cấp uy tín lâu năm về các loại rượu ngoại nhập khẩu các thương hiệu Whisky, Single Malt, Cognac, Vodka... nổi tiếng thế giới.
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-3 col-sm-6 col-md-4">
+                    <div class="single-product single-products">
+                        <div class="product-img">
+
+                            @{ string ImagePath1 = "~/wwwroot/anh/" + item.Anh;
+                            }
+                            <img src="@Url.Content(ImagePath1)" alt="" width="200" height="460" />
+                        </div>
+                        <div class="product-details">
+                            <a href="@Url.Action("Details", "SANPHAMs",new { id=item.MaSP})">Xem chi tiết</a>
+                            <h3>@Html.DisplayFor(modelItem => item.TenSP)</h3>
+                            <ul>
+                                <li>
+                                    <i class="fa fa-star"></i>
+                                </li>
+                                <li>
+                                    <i class="fa fa-star"></i>
+                                </li>
+                                <li>
+                                    <i class="fa fa-star"></i>
+                                </li>
+                                <li>
+                                    <i class="fa fa-star"></i>
+                                </li>
+                                <li>
+                                    <i class="fa fa-star"></i>
+                                </li>
+                            </ul>
+                            <span>@Html.DisplayFor(modelItem => item.Gia)</span>
+                        </div>
+                    </div>
+                </div>
+            }
+
+
+            <div class="col-lg-12">
+                <div class="pagenavigation-area">
+                    <nav aria-label="Page navigation example text-center">
+                        <nav aria-label="Page navigation example text-center">
+                            @Html.PagedListPager(Model, page => Url.Action("XemSanPhamTheoDanhMuc", "SANPHAMs", new { page, sanphamString = ViewBag.rs }))
+                        </nav>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+

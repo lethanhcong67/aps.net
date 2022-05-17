@@ -1,0 +1,52 @@
+﻿@model PagedList.IPagedList<CuaHangRuou.Models.SANPHAM>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Tìm kiếm sản phẩm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!-- products -->
+
+<section class="our-products-area ptb-100">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="section-title">
+                <span>Tìm kiếm</span>
+                <h2>Kết quả tìm kiếm</h2>
+                <p>
+                    @{
+                        string kq = String.Format("Có {0} kết quả cho từ khoá \"{1}\"", ViewBag.count, ViewBag.rs);
+                        @kq;
+                    }
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-3 col-sm-6 col-md-4">
+                    <div class="single-product single-products">
+                        <div class="product-img">
+                            <img src="~/wwwroot/anh/@item.Anh" alt="Product">
+                        </div>
+                        <div class="product-details">
+                            <a href="@Url.Action("Details", "SANPHAMs",new { id=item.MaSP})">Xem chi tiết</a>
+                            <h3>@item.TenSP</h3>
+                            <span>@(((long)item.Gia).ToString("0,###")) VNĐ</span>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+    
+    <div class="col-lg-12">
+        <nav aria-label="Page navigation example text-center">
+            @Html.PagedListPager(Model, page => Url.Action("TimKiemSanPham", "sanphams", new { page, searchString = ViewBag.rs }))
+        </nav>
+    </div>
+</section>
+
+
+
+

@@ -1,0 +1,43 @@
+﻿@model CuaHangRuou.Areas.Admin.Models.TAIKHOAN
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="form-horizontal">
+    <div class="content-wrapper">
+        <div class="row">
+            <div class="col-md-12 grid-margin">
+                <div class="d-flex justify-content-between flex-wrap">
+                    <div class="d-flex align-items-end flex-wrap">
+                        <div class="mr-md-3 mr-xl-5">
+                            <h2>Xin chào, @Session["TenDN"]</h2>
+                            <div class="d-flex">
+                                <i class="mdi mdi-home text-muted hover-cursor"></i>
+                                <p class="text-muted mb-0 hover-cursor">&nbsp;/&nbsp;Quản lý tài khoản&nbsp;&nbsp;/&nbsp;Cập nhật tài khoản</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 grid-margin">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title">Xóa tài khoản</h3>
+                    <h4>Bạn có chắc muốn xóa bản ghi này?</h4>
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-actions no-color">
+                            <input type="submit" value="Xóa" class="btn btn-default" /> |
+                            @Html.ActionLink("Quay lại", "QuanLyTaiKhoan")
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

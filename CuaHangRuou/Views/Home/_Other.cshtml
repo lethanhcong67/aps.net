@@ -1,0 +1,8 @@
+﻿@model IEnumerable<CuaHangRuou.Models.DANHMUC>
+
+@foreach (var item in Model)
+{
+<li class="dropdown-item">
+    <a href="@Url.Action("XemSanPhamTheoDanhMuc","SANPHAMs",new {id=item.MaDM })">@item.TenDM</a>
+</li>
+}

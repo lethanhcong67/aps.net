@@ -1,0 +1,108 @@
+﻿@model CuaHangRuou.Models.TAIKHOAN
+
+@{
+    ViewBag.Title = "Đổi mật khẩu";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.MaTK)
+    @Html.HiddenFor(model => model.TenDN)
+    @Html.HiddenFor(model => model.PhanQuyen)
+    @Html.HiddenFor(model => model.BiKhoa)
+    @Html.HiddenFor(model => model.MaKh)
+
+    <section class="login-area">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 p-0">
+                    <div class="log-in-bg"></div>
+                </div>
+                <div class="col-lg-6 col-md-6 p-0">
+                    <div class="login-form">
+                        <h3>Đổi mật khẩu</h3>
+                        <div class="row">
+                            <div class="col-md-12" style="padding:5px 45px;">
+                                <div class="form-group">
+                                    <h6>Mật khẩu cũ:</h6>
+                                    <input class="form-control" type="password" name="old" value=""
+                                           onfocus="changValue(this.name);" />
+                                    @if (ViewBag.oldErrorMsg != null)
+                                    {
+                                        <div class="text-danger" id="old-err">@ViewBag.oldErrorMsg</div>
+                                    }
+                                </div>
+                            </div>
+                            <div class="col-md-12" style="padding:10px 45px;">
+                                <div class="form-group">
+                                    <h6>Mật khẩu mới</h6>
+                                    <input class="form-control" type="password" name="new1" value=""
+                                           onfocus="changValue(this.name);" />
+                                    @if (ViewBag.new1ErrorMsg != null)
+                                    {
+                                        <div class="text-danger" id="new1-err">@ViewBag.new1ErrorMsg</div>
+                                    }
+                                </div>
+                            </div>
+                            <div class="col-md-12" style="padding:10px 45px;">
+
+                                <div class="form-group">
+                                    <h6>Nhập lại mật khẩu</h6>
+                                    <input class="form-control" type="password" name="MatKhau" value=""
+                                           onfocus="changValue(this.name);" />
+                                    @if (ViewBag.MatKhauErrorMsg != null)
+                                    {
+                                        <div class="text-danger" id="MatKhau-err">@ViewBag.MatKhauErrorMsg</div>
+                                    }
+                                </div>
+
+                            </div>
+                            <div class="col-md-6 offset-md-3">
+
+                                <button type="submit" class="btn default-btn">Đổi mật khẩu</button>
+                            </div>
+
+                            <div>
+                                <br />
+                            </div>
+                            <div class="col-lg-12">
+                                <ul class="social-list">
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-facebook"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-twitter"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-instagram"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-linkedin"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+
+}
+<script>
+    function changValue(name) {
+        document.getElementById(`${name}-err`).style.display = 'none';
+    }
+</script>

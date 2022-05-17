@@ -1,0 +1,57 @@
+﻿<!-- <script data-cfasync="false" src="~/wwwroot/js/email-decode.min.js"></script> -->
+<script src="~/wwwroot/js/jquery.min.js"></script>
+<script src="~/wwwroot/js/bootstrap.bundle.min.js"></script>
+<script src="~/wwwroot/js/meanmenu.min.js"></script>
+<script src="~/wwwroot/js/nice-select.min.js"></script>
+<script src="~/wwwroot/js/wow.min.js"></script>
+<script src="~/wwwroot/js/owl.carousel.min.js"></script>
+<script src="~/wwwroot/js/magnific-popup.min.js"></script>
+<script src="~/wwwroot/js/form-validator.min.js"></script>
+<script src="~/wwwroot/js/contact-form-script.js"></script>
+<script src="~/wwwroot/js/ajaxchimp.min.js"></script>
+<script src="~/wwwroot/js/custom.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('.input-counter').each(function () {
+            var spinner = jQuery(this),
+                input = spinner.find('input[type="number"]'),
+                btnUp = spinner.find('.plus-btn'),
+                btnDown = spinner.find('.minus-btn'),
+                min = input.attr('min'),
+                max = input.attr('max');
+
+            btnUp.on('click', function () {
+                var oldValue = parseInt(input.val());
+                if (oldValue >= max) {
+                    var newVal = oldValue;
+                } else {
+                    var newVal = oldValue + 1;
+                }
+                spinner.find("input").val(newVal);
+                spinner.find("input").trigger("change");
+            });
+            btnDown.on('click', function () {
+                var oldValue = parseInt(input.val());
+                if (oldValue <= min) {
+                    var newVal = oldValue;
+                } else {
+                    var newVal = oldValue - 1;
+                }
+                spinner.find("input").val(newVal);
+                spinner.find("input").trigger("change");
+            });
+        });
+    })
+
+    function Change(idGH, idSP) {
+        var a = $(`#input-${idSP}`).val();
+        var b = idGH;
+        console.log(a,b);
+        $.ajax({
+            type: 'POST',
+            data: { idGH:b,idSP:idSP,sl:a },
+            url: '/CHITIETGIOHANGs/Update'
+            });
+        }
+</script>

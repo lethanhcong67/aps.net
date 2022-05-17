@@ -1,0 +1,76 @@
+﻿@model IEnumerable<CuaHangRuou.Models.DANHMUC>
+<div class="navbar-area">
+    <div class="mobile-nav">
+        <a href="@Url.Action("Index", "Home")" title="Rượu Tây chính hãng; ruoutay.com" rel="home" class="logo">
+            <img src="~/wwwroot/img/giano-logo.png" alt="Rượu tây chính hãng; ruoutay.com">
+        </a>
+    </div>
+    <div class="main-nav giano-nav-two">
+        <nav class="navbar navbar-expand-md navbar-light">
+            <div class="container">
+                <a class="navbar-brand" href="@Url.Action("Index", "Home")">
+                    <img src="~/wwwroot/img/giano-logo.png" alt="Rượu tây chính hãng; ruoutay.com">
+                </a>
+                <!-- menu -->
+                <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent" style="display: block;">
+                    <ul class="navbar-nav m-auto">
+                        <li class="nav-item" >
+                            @Html.ActionLink("TRANG CHỦ", "Index", "Home")
+                        </li>
+                        @foreach (var item in Model)
+                        {
+                            <li class="nav-item">
+                                <a class="capitalize-text" href="@Url.Action("XemSanPhamTheoDanhMuc", "SANPHAMs", new { id = item.MaDM })">@item.TenDM</a>
+                            </li>
+                        }
+                        <li class="nav-item dropdown">
+                            <span class="@(ViewBag.catelogyNum>5?"dropdown-toggle":"")"></span>
+                            <ul class="dropdown-menu">
+                                @*các danh muc thêm sẽ hiển thị ở đây*@
+                                @{ Html.RenderAction("_Other", "Home"); }
+                            </ul>
+                        </li>
+                    </ul>
+                    <div class="other-option">
+                        <ul>
+                            <li class="search-field">
+                                <form action="/SANPHAMs/TimKiemSanPham" method="get" onsubmit="return validate();">
+                                    <input style="border-radius: 13px" type="text" name="searchString" id="searchValue" placeholder="  Tìm kiếm"
+                                           spellcheck="false" data-ms-editor="true">
+                                    <button style="border-radius: 13px" type="submit">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </form>
+
+                            </li>
+
+                            <li class="default-btn"
+                                style="width: 72px; height: 53px; padding: 6px 1px 0px 21px; border-radius:6px">
+                                <a href="@Url.Action("GioHang","CHITIETGIOHANGs", new { id= Session["idKH"] })" title="Giỏ hàng" rel="home">
+                                    <img style="width:40px; height:40px; border-radius: 15%"
+                                         src="~/wwwroot/img/cart/shopping_cart1.png" alt="Giỏ hàng">
+                                </a>
+                            </li>
+
+                            <li class="sidbar-menu">
+                                <a href="@Url.Action("Index","Home")" data-bs-toggle="modal" data-bs-target="#myModal2"
+                                   class="burgar-menu">
+                                    <i class="flaticon-menu"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+
+<script>
+    function validate() {
+        if (document.getElementById('searchValue').value != '') {
+            return true;
+        }
+        return false;
+    }
+</script>

@@ -1,0 +1,127 @@
+﻿@model CuaHangRuou.Areas.Admin.Models.TAIKHOAN
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+
+<div class="form-horizontal">
+    <div class="content-wrapper">
+        <div class="row">
+            <div class="col-md-12 grid-margin">
+                <div class="d-flex justify-content-between flex-wrap">
+                    <div class="d-flex align-items-end flex-wrap">
+                        <div class="mr-md-3 mr-xl-5">
+                            <h2>Xin chào, @Session["TenDN"]</h2>
+                            <div class="d-flex">
+                                <i class="mdi mdi-home text-muted hover-cursor"></i>
+                                <p class="text-muted mb-0 hover-cursor">&nbsp;/&nbsp;Quản lý tài khoản&nbsp;&nbsp;/&nbsp;Cập nhật tài khoản</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 grid-margin">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Cập nhật tài khoản</h4>
+                    <form action="/admin/taikhoans/edit" method="post">
+                        @Html.AntiForgeryToken()
+                        <p class="card-description">
+                            Nhập thông tin tài khoản
+                        </p>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">Mã tài khoản</label>
+                                    <div class="form-group">
+                                        <div class="col-md-10">
+                                            @Html.HiddenFor(model => model.MaTK)
+                                            @Html.HiddenFor(model => model.MaKh)
+                                            @Html.EditorFor(model => model.MaTK, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">Tên đăng nhập<span class="required-field">*</span></label>
+                                    <div class="form-group">
+                                        <div class="col-md-10">
+                                            @Html.EditorFor(model => model.TenDN, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.TenDN, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">Mật khẩu <span class="required-field">*</span></label>
+                                    <div class="form-group">
+                                        <div class="col-md-10">
+                                            @Html.EditorFor(model => model.MatKhau, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.MatKhau, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">Phân quyền <span class="required-field">*</span></label>
+                                    <div class="form-group">
+                                        <div class="col-md-10">
+                                            @Html.EditorFor(model => model.PhanQuyen, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.PhanQuyen, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-md-3 col-form-label">Trạng thái</label>
+                                    <div class="form-group">
+                                        <div class="col-md-10">
+                                            @Html.EditorFor(model => model.BiKhoa, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.BiKhoa, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @if (ViewBag.err != null)
+                            {
+                                <div class="text-danger">@ViewBag.err</div>
+                            }
+                            <div class="d-flex justify-content-center">
+                                <a class="nav-link mr-2" href="@Url.Action("QuanLyTaiKhoan","TAIKHOANs")">
+                                    <span class="menu-title btn btn-outline-danger btn-fw">Quay lại</span>
+                                </a>
+                                <p class="nav-link mr-2">
+                                    <input type="submit" value="Lưu lại" class="menu-title btn btn-outline-success btn-fw" />
+                                </p>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+    @if (ViewBag.Error != null)
+    {
+        <br />
+        <div class="alert alert-danger" role="alert">@ViewBag.Error</div>
+    }
+
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

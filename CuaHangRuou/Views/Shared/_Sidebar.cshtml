@@ -1,0 +1,86 @@
+﻿<div class="sidebar-modal">
+    <div class="modal right fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">
+                            <i class="fa fa-times"></i>
+                        </span>
+                    </button>
+                    <h2 class="modal-title" id="myModalLabel2">
+                        <a href="@Url.Action("Index","Home")">
+                            <img src="~/wwwroot/img/giano-logo.png" alt="Rượu tây chính hãng; ruoutay.com">
+                        </a>
+                    </h2>
+                </div>
+                <div class="modal-body">
+                    <div class="sidebar-modal-widget">
+                        
+                        <h3 class="title">Tài khoản</h3>
+                        <ul>
+                            @if (Session["idAcc"] != null)
+                            {
+                                <li><a href="#">Xin chào, @Session["TenDN"]</a></li>
+
+                                <li>@Html.ActionLink("Sủa tài khoản", "SuaTaiKhoan", "TAIKHOANs")</li>
+                                <li><a class="capitalize-text" href="@Url.Action("DoiMatKhau", "TAIKHOANs", new { id = Session["idAcc"] })">Đổi mật khẩu</a></li>
+                                <li>@Html.ActionLink("Đăng xuất", "Logout", "TAIKHOANs")</li>
+                            }
+                            else
+                            {
+                                <li>@Html.ActionLink("Đăng nhập", "Login", "TAIKHOANs")</li>
+                                <li>@Html.ActionLink("Đăng ký", "DangKy", "TAIKHOANs")</li>
+                            }
+                        </ul>
+                    </div>
+                    <div class="sidebar-modal-widget">
+                        <h3 class="title">Thông tin liên hệ</h3>
+                        <ul class="contact-info">
+                            <li>
+                                <i class="fa fa-map-marker"></i>
+                                Địa chỉ
+                                <span>Minh Khai, Bắc Từ Liêm, Hà Nội</span>
+                            </li>
+                            <li>
+                                <i class="fa fa-phone"></i>
+                                Email
+                                <span>ruoutay@gmail.com</span>
+                            </li>
+                            <li>
+                                <i class="fa fa-envelope"></i>
+                                Điện thoại
+                                <span>+84899999999</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="sidebar-modal-widget">
+                        <h3 class="title">Liên hệ</h3>
+                        <ul class="social-list">
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-facebook"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-twitter"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-instagram"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-linkedin"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

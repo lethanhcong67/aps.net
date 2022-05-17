@@ -1,0 +1,28 @@
+.pagination {
+    text-align: center;
+    margin: 20px auto 0;
+    display: table;
+}
+
+    .pagination li {
+        padding: 0 8px 0;
+        background-color: #4d0322;
+    }
+
+        .pagination li:hover,
+        .pagination li.active {
+            background-color: #af8d9b;
+            border: 1px solid #af8d9b;
+        }
+
+        .pagination li a {
+            color: #ffffff;
+            background-color: #4d0322;
+            width: 40px;
+            height: 40px;
+            border: 1px solid #4d0322;
+            line-height: 24px;
+            -webkit-transition: all 0.5s;
+            transition: all 0.5s;
+        }
+

@@ -1,0 +1,108 @@
+﻿@model CuaHangRuou.Models.SANPHAM
+@using CuaHangRuou.Models;
+@{
+
+    ViewBag.Title = " Chi tiết sản phẩm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- page-title -->
+<div class="page-title-area item-bg-3">
+    @{ 
+        List<SANPHAM> sps = new List<SANPHAM>();
+        sps.Add(Model);
+    }
+    <div class="container">
+        <div class="page-title-content">
+            <h2>Chi tiết sản phẩm</h2>
+            <ul>
+                <li>
+                    <a href="@Url.Action("Index", "Home")">
+                        Home
+                        <i class="fa fa-chevron-right"></i>
+                    </a>
+                </li>
+                <li>Chi tiết sản phẩm</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- product-details -->
+<section class="product-details-area ptb-100">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-12">
+                <div class="product-details-image">
+                    <img src="~/wwwroot/anh/@Model.Anh" alt="image">
+                </div>
+                <h5 style="margin-top: 10px;"> Mô tả sản phẩm</h5>
+                <p>@Model.MoTa</p>
+            </div>
+            <div class="col-lg-6 col-md-12">
+                <div class="product-details-desc">
+                    <h3>@Model.TenSP</h3>
+                    <div class="price">
+                        <span>@(((long) Model.Gia).ToString("0,###")) VNĐ</span>
+                    </div>
+                    <div class="col-lg-12 col-md-12">
+                        <div class="tab products-details-tab">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12">
+                                    <div class="tab_content">
+                                        <div class="tabs_item">
+                                            <div class="products-details-tab-content">
+                                                <ul class="additional-information">
+                                                    <li><span>Số lượng:</span> @Model.SoLuong</li>
+                                                    <li><span>Loại sản phẩm:</span> @Model.LoaiSP</li>
+                                                    <li><span>Thương hiệu:</span> @Model.ThuongHieu</li>
+                                                    <li><span>Xuất xứ:</span> @Model.XuatXu</li>
+                                                    <li><span>Dung tích:</span> @Model.DungTich</li>
+                                                    <li><span>Nồng độ:</span> @Model.NongDo</li>
+                                                    <li><span>Tuổi rượu:</span> @Model.TuoiRuou</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-add-to-cart">
+                        <form action="/sanphams/addtocart" method="post">
+                            @Html.Hidden("masp", Model.MaSP)
+                            <div class="input-counter">
+                                <input type="number" name="so_luong" id="so_luong" min="1" value="1" spellcheck="false" data-ms-editor="true">
+                            </div>
+                            <button type="submit" class="default-btn">
+                                <i class="fa fa-cart-plus"></i>
+                                Thêm vào giỏ hàng
+                            </button>
+                        </form>
+                    </div>
+                    <div class="buy-checkbox-btn">
+
+                        <div class="item">
+                            <a href="@Url.Action("DatHang", "SanPhams", new {sps=sps})" class="default-btn">
+                                Đặt hàng
+                            </a>
+                        </div>
+                    </div>
+                    <div class="custom-payment-options">
+                        <span>Thanh toán online:</span>
+                        <div class="payment-methods">
+                            <img src="~/wwwroot/img/product-details/payment/1.svg" alt="image">
+                            <img src="~/wwwroot/img/product-details/payment/2.svg" alt="image">
+                            <img src="~/wwwroot/img/product-details/payment/3.svg" alt="image">
+                            <img src="~/wwwroot/img/product-details/payment/4.svg" alt="image">
+                            <img src="~/wwwroot/img/product-details/payment/5.svg" alt="image">
+                            <img src="~/wwwroot/img/product-details/payment/6.svg" alt="image">
+                            <img src="~/wwwroot/img/product-details/payment/7.svg" alt="image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,76 @@
+﻿<footer class="footer-top-area pt-100">
+    <div class="container">
+        <div class="row footer-wrapper">
+            <div class="col-lg-4 col-sm-6 col-md-6">
+                <div class="single-widget">
+                    <a class="brand" href="@Url.Action("Index","Home")">
+                        <img src="~/wwwroot/img/footer-logo.png" alt="footer-logo">
+                    </a>
+                    <p>
+                        
+                        Bên cạnh tâm huyết và lợi nhuận phù hợp, Ruoutay.com luôn ý thức được trách nhiệm đóng góp cho cộng đồng trong hoạt động của mình. Cũng như kiểm soát về chất lượng sản phẩm để đảm bảo hàng giả không đến tay Quý vị.
+                        <br />
+                        Thương hiệu Ruoutay.com là điểm mua hàng tin cậy và thuận lợi.
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-6 col-md-6">
+                <div class="single-widget single-widgets">
+                    <h3>Tài Khoản</h3>
+                    <ul>
+                        @if (Session["idAcc"] != null)
+                        {
+                            <li>@Html.ActionLink("Sủa tài khoản", "SuaTaiKhoan", "TAIKHOANs")</li>
+                            <li><a class="capitalize-text" href="@Url.Action("DoiMatKhau", "TAIKHOANs", new { id = Session["idAcc"] })">Đổi mật khẩu</a></li>
+                            <li>@Html.ActionLink("Đăng xuất", "Logout", "TAIKHOANs")</li>
+                        }
+                        else
+                        {
+                            <li>@Html.ActionLink("Đăng nhập", "Login", "TAIKHOANs")</li>
+                            <li>@Html.ActionLink("Đăng ký", "DangKy", "TAIKHOANs")</li>
+                        }
+                        <li><a class="capitalize-text" href="@Url.Action("GioHang", "CHITIETGIOHANGs", new { id =Session["idKH"] })">Giỏ hàng</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-6 col-md-6">
+                <div class="single-widget">
+                    <h3>Liên hệ</h3>
+                    <ul>
+                        <li class="address">
+                            <i class="fa fa-map-marker"></i>
+                            Minh Khai, Bấc Từ Liêm, Hà Nội
+                        </li>
+                        <li class="address">
+                            <i class="fa fa-phone"></i>
+                            <span>+84899999999</span>
+                        </li>
+
+                        <li class="address">
+                            <i class="fa fa-envelope"></i>
+                            <span class="__cf_email__">ruoutay.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container footer-bottom">
+        <div class="row">
+            <div class="col-lg-6 col-md-6">
+                <div>
+                    <p>
+                        Copyright <i class="fa fa-copyright"></i>2021 Giano. Designed By
+                        <a href="https://envytheme.com/" target="_blank">EnvyTheme</a>
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <ul class="terms-conditions">
+                    <li>@Html.ActionLink("Terms & Conditions", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Privacy Policy", "Index", "Home")</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
